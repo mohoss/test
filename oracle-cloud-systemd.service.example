@@ -1,0 +1,15 @@
+[Unit]
+Description=Crypto AI Bot paper-trading run
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/crypto-ai-bot
+Environment=SYMBOL=BTC/USDT
+Environment=TIMEFRAME=1h
+Environment=EXCHANGE_ID=binance
+ExecStart=/usr/bin/python3 /opt/crypto-ai-bot/run_bot.py --demo
+
+[Install]
+WantedBy=multi-user.target
